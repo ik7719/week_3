@@ -12,16 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequiredArgsConstructor
-@RestController
+
 public class ModelController {
 
-    private final ModelService modelService;
-    private final ModelRepository modelRepository;
-
-    @GetMapping("/api/models")
-    public List<Model> getModels(){
-        return modelRepository.findAll();
-    }
 
 }
