@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Getter
 public class MemoRequestDto {
 
-    private String username;
-    private String contents;
+    private String writer;
+    private String titles;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 

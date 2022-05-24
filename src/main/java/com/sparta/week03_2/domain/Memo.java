@@ -9,29 +9,29 @@ import javax.persistence.*;
 @Getter
 @Entity // 테이블과 연계됨을 스프링에게 알려줍니다.
 public class Memo extends Timestamped { // 생성,수정 시간을 자동으로 만들어줍니다.
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
 
     @Column(nullable = false)
-    private String username;
+    private String titles;
 
     @Column(nullable = false)
-    private String contents;
+    private String writer;
 
-
-    public Memo(String username, String contents) {
-        this.username = username;
-        this.contents = contents;
+    public Memo(String writer, String titles) {
+        this.writer = writer;
+        this.titles = titles;
     }
 
     public Memo(MemoRequestDto requestDto) {
-        this.username = requestDto.getUsername();
-        this.contents = requestDto.getContents();
+        this.writer = requestDto.getWriter();
+        this.titles = requestDto.getTitles();
     }
 
     public void update(MemoRequestDto requestDto) {
-        this.username = requestDto.getUsername();
-        this.contents = requestDto.getContents();
+        this.writer = requestDto.getWriter();
+        this.titles = requestDto.getTitles();
     }
 }
