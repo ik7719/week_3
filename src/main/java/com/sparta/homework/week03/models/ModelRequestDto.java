@@ -6,6 +6,6 @@ import lombok.Getter;
 public class ModelRequestDto {
 
     private String name;
-    private String address;
+    private int days;
 
 }

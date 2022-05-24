@@ -17,19 +17,14 @@ public class Model {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private String address;
+    private int days;
 
-    public Model(ModelRequestDto requestDto){
+    public Model(Long id, ModelRequestDto requestDto){
         this.name = requestDto.getName();
-        this.address = requestDto.getAddress();
+        this.days = requestDto.getDays();
     }
-
-
-
     public void update(ModelRequestDto requestDto){
         this.name = requestDto.getName();
-        this.address = requestDto.getAddress();
+        this.days = requestDto.getDays();
     }
-
-
 }
