@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -18,7 +19,7 @@ public class MemoController {
     private final MemoRepository memoRepository;
     private final MemoService memoService;
 
-    @PostMapping("/api/memos")
+    @PostMapping("/api/memos/post")
     public Memo createMemo(@RequestBody MemoRequestDto requestDto) {
         Memo memo = new Memo(requestDto);
         return memoRepository.save(memo);

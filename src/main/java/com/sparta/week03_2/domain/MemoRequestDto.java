@@ -13,6 +13,6 @@ public class MemoRequestDto {
     private String titles;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-
+    private String pw;
 
 }
