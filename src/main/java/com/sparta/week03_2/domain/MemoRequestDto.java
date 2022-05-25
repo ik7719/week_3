@@ -14,5 +14,6 @@ public class MemoRequestDto {
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
     private String pw;
+    private String comment;
 
 }
