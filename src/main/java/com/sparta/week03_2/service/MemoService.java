@@ -5,7 +5,6 @@ import com.sparta.week03_2.domain.MemoRepository;
 import com.sparta.week03_2.domain.MemoRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.transaction.Transactional;
 
@@ -25,6 +24,20 @@ public class MemoService {
             return memo.getId();
         } else {
             return id;
+        }
+    }
+
+    @Transactional
+    public boolean delete(Long id, MemoRequestDto requestDto) {
+        Memo memo = memoRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
+        );
+        if( memo.getPassword().equals( requestDto.getPassword() ) ){
+            memo.delete(requestDto);
+            memoRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
         }
     }
 }

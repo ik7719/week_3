@@ -39,4 +39,8 @@ public class Memo extends Timestamped { // 생성,수정 시간을 자동으로 
         this.titles = requestDto.getTitles();
         this.password = requestDto.getPassword();
     }
+
+    public void delete(MemoRequestDto requestDto) { // Service에서 사용
+        this.password = requestDto.getPassword();
+    }
 }
