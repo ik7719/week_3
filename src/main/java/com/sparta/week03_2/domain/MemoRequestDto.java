@@ -11,6 +11,5 @@ public class MemoRequestDto {
     private String titles;
     private String password;
     private Long id;
-//    private String comment;;
 
 }

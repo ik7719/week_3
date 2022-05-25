@@ -31,9 +31,10 @@ public class Memo extends Timestamped { // 생성,수정 시간을 자동으로 
         this.writer = requestDto.getWriter();
         this.titles = requestDto.getTitles();
         this.id = requestDto.getId();
+        this.password = requestDto.getPassword();
     }
 
-    public void update(MemoRequestDto requestDto) {
+    public void update(MemoRequestDto requestDto) { // Service에서 사용
         this.writer = requestDto.getWriter();
         this.titles = requestDto.getTitles();
         this.password = requestDto.getPassword();
