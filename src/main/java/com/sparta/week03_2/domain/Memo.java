@@ -22,16 +22,17 @@ public class Memo extends Timestamped { // 생성,수정 시간을 자동으로 
     @Column(nullable = false)
     private String writer;
 
-    public Memo(String writer, String titles) {
-        this.writer = writer;
-        this.titles = titles;
-    }
+//    public Memo(String writer, String titles, String password) {
+//        this.writer = writer;
+//        this.titles = titles;
+//        this.password = password;
+//    }
 
     public Memo(MemoRequestDto requestDto) {
         this.writer = requestDto.getWriter();
         this.titles = requestDto.getTitles();
-        this.id = requestDto.getId();
-        this.password = requestDto.getPassword();
+//        this.id = requestDto.getId();
+//        this.password = requestDto.getPassword();
     }
 
     public void update(MemoRequestDto requestDto) { // Service에서 사용
