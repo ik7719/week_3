@@ -33,7 +33,7 @@ public class MemoService {
                 () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
         );
         if( memo.getPassword().equals( requestDto.getPassword() ) ){
-//            memo.delete(requestDto);
+            memo.delete(requestDto);
             memoRepository.deleteById(id);
             return true;
         } else {

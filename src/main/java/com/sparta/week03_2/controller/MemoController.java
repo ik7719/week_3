@@ -21,8 +21,8 @@ public class MemoController {
 
     @PostMapping("/api/post")
     public Memo createMemo(@RequestBody MemoRequestDto requestDto) {
-        Memo memo = new Memo(requestDto); // 저장하는 것은 Dto가 아니라 Memo이니, Dto의 정보를 memo에 담아야 합니다.
-        return memoRepository.save(memo); // JPA를 이용하여 DB에 저장하고, 그 결과를 반환합니다.
+        Memo memo = new Memo(requestDto);
+        return memoRepository.save(memo);
     }
 
     @GetMapping("/api/read")
