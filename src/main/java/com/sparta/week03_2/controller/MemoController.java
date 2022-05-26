@@ -19,29 +19,29 @@ public class MemoController {
     private final MemoRepository memoRepository;
     private final MemoService memoService;
 
-    @PostMapping("/api/post")
+    @PostMapping("/api")
     public Memo createMemo(@RequestBody MemoRequestDto requestDto) {
         Memo memo = new Memo(requestDto);
         return memoRepository.save(memo);
     }
 
-    @GetMapping("/api/read")
+    @GetMapping("/api")
     public List<Memo> getMemos() {
         return memoRepository.findAllByOrderByModifiedAtDesc();
     }
 
-    @GetMapping("/api/read/{id}")
+    @GetMapping("/api/{id}")
     public Optional<Memo> getOne(@PathVariable Long id) {
         return memoRepository.findById(id);
     }
 
-    @PutMapping("/api/modify/{id}")
+    @PutMapping("/api/{id}")
     public Long updateMemo(@PathVariable Long id, @RequestBody MemoRequestDto requestDto) {
         memoService.update(id, requestDto);
         return id;
     }
 
-    @DeleteMapping("/api/delete/{id}")
+    @DeleteMapping("/api/{id}")
     public Long deleteMemo(@PathVariable Long id, @RequestBody MemoRequestDto requestDto) {
         memoService.delete(id, requestDto);
         return id;
