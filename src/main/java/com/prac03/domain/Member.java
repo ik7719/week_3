@@ -2,14 +2,12 @@ package com.prac03.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 
-@Slf4j
 @Entity
-//@NoArgsConstructor
 @Getter
+@NoArgsConstructor
 public class Member {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,9 +20,9 @@ public class Member {
     @Column(nullable = false)
     private String writer;
 
-    public Member(){
-        String title;
-        String writer;
+    public Member(MemberResponseDto memberResponseDto) {
+        this.title = memberResponseDto.getTitle();
+        this.writer = memberResponseDto.getWriter();
     }
 
 }

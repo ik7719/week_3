@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    List<Member> findAllByOrderByModifiedAtDesc(); // 왜 활성화가 안될까?
+//    List<Member> findAllByOrderByModifiedAtDesc(); // 왜 활성화가 안될까?
 
 }
