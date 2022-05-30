@@ -1,11 +1,11 @@
-package com.sparta.week03_2.domain;
+package com.sparta.week03_2.dto;
 
 import lombok.Data;
 import lombok.Getter;
 
 @Data
 @Getter
-public class MemoRequestDto {
+public class UserRequestDto {
 
     private String writer;
     private String titles;
