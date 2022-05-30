@@ -5,11 +5,13 @@ import lombok.Getter;
 
 @Data
 @Getter
-public class UserRequestDto {
-
+public class UserRequestDto
+{
+    private Long id;
     private String writer;
     private String titles;
-    private String password;
-    private Long id;
 
+    private String username;
+    private String password;
+    private String samePassword;
 }

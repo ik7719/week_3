@@ -15,7 +15,14 @@ public class User extends Timestamped {
     @Id
     private Long id;
 
+    @Column(nullable = false)
+    private String username;
+
     private String password;
+
+    private String samePassword;
+
+    private String regExp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])";
 
     @Column(nullable = false)
     private String titles;
@@ -23,18 +30,24 @@ public class User extends Timestamped {
     @Column(nullable = false)
     private String writer;
 
-    public User(UserRequestDto requestDto) {
-        this.writer = requestDto.getWriter();
-        this.titles = requestDto.getTitles();
+    public User(UserRequestDto userRequestDto) {
+        this.password = userRequestDto.getPassword();
+        this.samePassword = userRequestDto.getSamePassword();
     }
 
-    public void update(UserRequestDto requestDto) {
-        this.writer = requestDto.getWriter();
-        this.titles = requestDto.getTitles();
-        this.password = requestDto.getPassword();
+    public void create(UserRequestDto userRequestDto)
+    {
+        this.password = userRequestDto.getPassword();
+        this.samePassword = userRequestDto.getSamePassword();
     }
 
-    public void delete(UserRequestDto requestDto) {
-        this.password = requestDto.getPassword();
+    public void update(UserRequestDto userRequestDto) {
+        this.writer = userRequestDto.getWriter();
+        this.titles = userRequestDto.getTitles();
+        this.password = userRequestDto.getPassword();
+    }
+
+    public void delete(UserRequestDto userRequestDto) {
+        this.password = userRequestDto.getPassword();
     }
 }

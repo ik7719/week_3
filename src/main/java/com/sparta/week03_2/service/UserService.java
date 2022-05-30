@@ -13,14 +13,43 @@ import javax.transaction.Transactional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserRequestDto userRequestDto;
+    User user = new User();
+    public boolean signupPassword(UserRequestDto userRequestDto)
+    {
+        if(! user.getPassword().equals( user.getSamePassword() )
+                || user.getPassword().matches(user.getUsername()) )
+            {
+                user.update(userRequestDto);
+                return true;
+            }
+        return false;
+    }
+
+//    public Long signup(Long id, UserRequestDto userRequestDto)
+//    {
+//        User user = new User();
+//        if (user.getUsername().matches(userRequestDto.getUsername()))
+//        {
+//            if( user.getPassword().equals( userRequestDto.getPassword() ) )
+//            {
+//                user.update(userRequestDto);
+//            } else {
+//                return id;
+//            }
+//        }
+//        return user.getId();
+//    }
 
     @Transactional
-    public Long update(Long id, UserRequestDto requestDto) {
+    public Long update(Long id, UserRequestDto userRequestDto)
+    {
         User user = userRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
         );
-        if( user.getPassword().equals( requestDto.getPassword() ) ){
-            user.update(requestDto);
+        if( user.getPassword().equals( userRequestDto.getPassword() ) )
+        {
+            user.update(userRequestDto);
             return user.getId();
         } else {
             return id;

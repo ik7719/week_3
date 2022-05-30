@@ -5,13 +5,12 @@ import com.sparta.week03_2.repository.UserRepository;
 import com.sparta.week03_2.dto.UserRequestDto;
 import com.sparta.week03_2.service.UserService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Slf4j
 @RequiredArgsConstructor
 @RestController
 public class UserController {
@@ -19,30 +18,59 @@ public class UserController {
     private final UserRepository userRepository;
     private final UserService userService;
 
-    @PostMapping("/api/signup")
+    @PostMapping("/signup")
     public User createMemo(@RequestBody UserRequestDto requestDto) {
         User user = new User(requestDto);
+
+        userService.signupPassword();
+
+        // 리포에 저장하기 전에 확인
         return userRepository.save(user);
     }
 
+    @GetMapping("/login")
+    public String loginPage()
+    {
+        return "redirect:/login-form.html";
+    }
+
+    @PostMapping("/login")
+    public String loginProcess
+            (
+                    @RequestParam String id,
+                    @RequestParam String password,
+                    Model model
+            )
+    {
+        if (id.equals(password))
+        {
+            model.addAttribute("loginId", id);
+        }
+        return "login-result";
+    }
+
     @GetMapping("/api")
-    public List<User> getMemos() {
+    public List<User> getMemos()
+    {
         return userRepository.findAllByOrderByModifiedAtDesc();
     }
 
     @GetMapping("/api/{id}")
-    public Optional<User> getOne(@PathVariable Long id) {
+    public Optional<User> getOne(@PathVariable Long id)
+    {
         return userRepository.findById(id);
     }
 
     @PutMapping("/api/{id}")
-    public Long updateMemo(@PathVariable Long id, @RequestBody UserRequestDto requestDto) {
+    public Long updateMemo(@PathVariable Long id, @RequestBody UserRequestDto requestDto)
+    {
         userService.update(id, requestDto);
         return id;
     }
 
     @DeleteMapping("/api/{id}")
-    public Long deleteMemo(@PathVariable Long id, @RequestBody UserRequestDto requestDto) {
+    public Long deleteMemo(@PathVariable Long id, @RequestBody UserRequestDto requestDto)
+    {
         userService.delete(id, requestDto);
         return id;
     }
