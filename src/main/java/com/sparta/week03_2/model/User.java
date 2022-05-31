@@ -33,24 +33,29 @@ public class User extends Timestamped {
     @Column(nullable = false)
     private String writer;
 
-    public User(UserRequestDto userRequestDto) {
-        this.password = userRequestDto.getPassword();
-        this.samePassword = userRequestDto.getSamePassword();
-    }
-
-    public void create(UserRequestDto userRequestDto)
+    public void getComments(UserRequestDto userRequestDto)
     {
-        this.password = userRequestDto.getPassword();
-        this.samePassword = userRequestDto.getSamePassword();
+        this.comment = userRequestDto.getComment();
     }
 
-    public void update(UserRequestDto userRequestDto) {
-        this.writer = userRequestDto.getWriter();
-        this.titles = userRequestDto.getTitles();
-        this.password = userRequestDto.getPassword();
-    }
-
-    public void delete(UserRequestDto userRequestDto) {
-        this.password = userRequestDto.getPassword();
-    }
+//    public User(UserRequestDto userRequestDto) {
+//        this.password = userRequestDto.getPassword();
+//        this.samePassword = userRequestDto.getSamePassword();
+//    }
+//
+//    public void create(UserRequestDto userRequestDto)
+//    {
+//        this.password = userRequestDto.getPassword();
+//        this.samePassword = userRequestDto.getSamePassword();
+//    }
+//
+//    public void update(UserRequestDto userRequestDto) {
+//        this.writer = userRequestDto.getWriter();
+//        this.titles = userRequestDto.getTitles();
+//        this.password = userRequestDto.getPassword();
+//    }
+//
+//    public void delete(UserRequestDto userRequestDto) {
+//        this.password = userRequestDto.getPassword();
+//    }
 }
