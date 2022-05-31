@@ -17,6 +17,8 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserRequestDto userRequestDto;
     User user = new User();
+
+
     public void signupPassword()
     {
         if(! user.getPassword().equals( user.getSamePassword() )
@@ -41,32 +43,32 @@ public class UserService {
 //        return user.getId();
 //    }
 
-    @Transactional
-    public Long update(Long id, UserRequestDto userRequestDto)
-    {
-        User user = userRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
-        );
-        if( user.getPassword().equals( userRequestDto.getPassword() ) )
-        {
-            user.update(userRequestDto);
-            return user.getId();
-        } else {
-            return id;
-        }
-    }
-
-    @Transactional
-    public boolean delete(Long id, UserRequestDto requestDto) {
-        User user = userRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
-        );
-        if( user.getPassword().equals( requestDto.getPassword() ) ){
-            user.delete(requestDto);
-            userRepository.deleteById(id);
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    @Transactional
+//    public Long update(Long id, UserRequestDto userRequestDto)
+//    {
+//        User user = userRepository.findById(id).orElseThrow(
+//                () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
+//        );
+//        if( user.getPassword().equals( userRequestDto.getPassword() ) )
+//        {
+//            user.update(userRequestDto);
+//            return user.getId();
+//        } else {
+//            return id;
+//        }
+//    }
+//
+//    @Transactional
+//    public boolean delete(Long id, UserRequestDto requestDto) {
+//        User user = userRepository.findById(id).orElseThrow(
+//                () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
+//        );
+//        if( user.getPassword().equals( requestDto.getPassword() ) ){
+//            user.delete(requestDto);
+//            userRepository.deleteById(id);
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 }

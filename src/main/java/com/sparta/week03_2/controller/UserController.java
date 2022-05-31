@@ -4,6 +4,7 @@ import com.sparta.week03_2.service.UserService;
 import com.sparta.week03_2.model.User;
 import com.sparta.week03_2.repository.UserRepository;
 import com.sparta.week03_2.dto.UserRequestDto;
+import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,10 @@ public class UserController {
     private final UserService userService;
 
     @Autowired
+    
     @PostMapping("/signup")
     public User createUser(@RequestBody UserRequestDto userRequestDto) {
         User user = new User(userRequestDto);
-
         userService.signupPassword();
 
         // 리포에 저장하기 전에 확인
