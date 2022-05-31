@@ -1,10 +1,12 @@
 package com.sparta.week03_2.dto;
 
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
+import org.springframework.stereotype.Component;
 
-@Data
-@Getter
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Component
 public class UserRequestDto
 {
     private Long id;

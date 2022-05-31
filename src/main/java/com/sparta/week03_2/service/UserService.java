@@ -3,27 +3,27 @@ package com.sparta.week03_2.service;
 import com.sparta.week03_2.model.User;
 import com.sparta.week03_2.repository.UserRepository;
 import com.sparta.week03_2.dto.UserRequestDto;
-import lombok.RequiredArgsConstructor;
+import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-@RequiredArgsConstructor
+
+
+@Data
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
     private final UserRequestDto userRequestDto;
     User user = new User();
-    public boolean signupPassword(UserRequestDto userRequestDto)
+    public void signupPassword()
     {
         if(! user.getPassword().equals( user.getSamePassword() )
                 || user.getPassword().matches(user.getUsername()) )
             {
                 user.update(userRequestDto);
-                return true;
             }
-        return false;
     }
 
 //    public Long signup(Long id, UserRequestDto userRequestDto)
