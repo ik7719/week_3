@@ -18,16 +18,15 @@ public class UserController {
     private final UserRepository userRepository;
     private final UserService userService;
 
-    @Autowired
-    
-    @PostMapping("/signup")
-    public User createUser(@RequestBody UserRequestDto userRequestDto) {
-        User user = new User(userRequestDto);
-        userService.signupPassword();
-
-        // 리포에 저장하기 전에 확인
-        return userRepository.save(user);
-    }
+//    @Autowired
+//    @PostMapping("/signup")
+//    public User createUser(@RequestBody UserRequestDto userRequestDto) {
+//        User user = new User(userRequestDto);
+//        userService.signupPassword();
+//
+//        // 리포에 저장하기 전에 확인
+//        return userRepository.save(user);
+//    }
 
 //    @GetMapping("/login")
 //    public String loginPage()

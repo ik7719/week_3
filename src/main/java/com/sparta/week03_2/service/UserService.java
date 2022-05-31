@@ -15,18 +15,25 @@ import javax.transaction.Transactional;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final UserRequestDto userRequestDto;
+
     User user = new User();
 
-
-    public void signupPassword()
+    public UserService(UserRepository userRepository)
     {
-        if(! user.getPassword().equals( user.getSamePassword() )
-                || user.getPassword().matches(user.getUsername()) )
-            {
-                user.update(userRequestDto);
-            }
+        this.userRepository = userRepository;
     }
+
+
+
+
+//    public void signupPassword()
+//    {
+//        if(! user.getPassword().equals( user.getSamePassword() )
+//                || user.getPassword().matches(user.getUsername()) )
+//            {
+//                user.update(userRequestDto);
+//            }
+//    }
 
 //    public Long signup(Long id, UserRequestDto userRequestDto)
 //    {
